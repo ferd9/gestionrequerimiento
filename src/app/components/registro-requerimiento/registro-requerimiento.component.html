@@ -1,0 +1,69 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-dark text-white">
+      <h3 class="mb-0">{{isUpdate?"Actualización":"Registro"}} de Requerimientos</h3>
+    </div>
+    <div class="card-body">
+
+      <form [formGroup]="requerimientoForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="nombreSolicitud">Nombre de la Solicitud</label>
+          <input id="nombreSolicitud" type="text" class="form-control" formControlName="nombreSolicitud">
+        </div>
+
+        <div class="form-group">
+          <label for="descripcionSolicitud">Descripción de la Solicitud</label>
+          <textarea id="descripcionSolicitud" class="form-control" formControlName="descripcionSolicitud"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="anexo">Anexo</label>
+          <input id="anexo" type="text" class="form-control" formControlName="anexo">
+        </div>
+
+        <div class="form-group">
+          <label for="fechaSolicitud">Fecha de Solicitud</label>
+          <input id="fechaSolicitud" type="date" class="form-control" formControlName="fechaSolicitud">
+        </div>
+
+        <div class="form-group">
+          <label for="solicitante">Solicitante</label>
+          <input id="solicitante" type="text" class="form-control"
+                 [value]="nombreSolicitante"
+                 [ngbTypeahead]="searchSolicitantes"
+                 [resultFormatter]="formatterSolicitante"
+                 [inputFormatter]="formatterSolicitante"
+                 [editable]="false"
+                 (selectItem)="selectSolicitante($event)" />
+        </div>
+
+        <div class="form-group">
+          <label for="coordinador">Coordinador</label>
+          <input id="coordinador" type="text" class="form-control"
+                 [value]="nombreCoordinador"
+                 [ngbTypeahead]="searchCoordinadores"
+                 [resultFormatter]="formatterCoordinador"
+                 [inputFormatter]="formatterCoordinador"
+                 [editable]="false"
+                 (selectItem)="selectCoordinador($event)" />
+        </div>
+
+        <div class="form-group">
+          <label for="analista">Analista</label>
+          <input id="analista" type="text" class="form-control"
+                 [value]="nombreAnalista"
+                 [ngbTypeahead]="searchAnalistas"
+                 [resultFormatter]="formatterAnalista"
+                 [inputFormatter]="formatterAnalista"
+                 [editable]="false"
+                 (selectItem)="selectAnalista($event)" />
+        </div>
+
+        <button type="submit" class="btn btn-primary float-left">{{isUpdate?"Actualizar":"Registrar"}}</button>
+
+        <button type="button" class="btn btn-danger float-right" [routerLink]="['/requerimientos']">Cancelar</button>
+
+      </form>
+    </div>
+  </div>
+</div>

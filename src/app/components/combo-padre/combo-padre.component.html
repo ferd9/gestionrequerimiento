@@ -1,0 +1,10 @@
+<div class="container bg-light p-4 rounded shadow-sm">
+  <label for="tipoRequerimiento" class="font-weight-bold">Selecciona un tipo de requerimiento:</label>
+  <select id="tipoRequerimiento" class="form-control mt-2" (change)="onTipoChange($event)">
+    <option *ngFor="let tipo of tiposRequerimiento" [value]="tipo.id">
+      {{ tipo.nombre }}
+    </option>
+  </select>
+</div>
+<!-- Incluir el componente hijo -->
+<app-combo-hijo [tipoSeleccionado]="tipoSeleccionado"></app-combo-hijo>

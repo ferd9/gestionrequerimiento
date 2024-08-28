@@ -1,0 +1,9 @@
+.card-header {
+  background-color: #343a40; /* Dark background */
+  color: #fff; /* White text */
+}
+
+.btn-danger {
+  background-color: #ff5252; /* Red color */
+  border-color: #ff5252;
+}
